@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:bookly_app/core/utils/styels.dart';
@@ -26,10 +25,7 @@ class CustomButton extends StatelessWidget {
         style: TextButton.styleFrom(
           backgroundColor: backgroundColor,
           shape: RoundedRectangleBorder(
-            borderRadius: borderRadius ??
-                BorderRadius.circular(
-                  12,
-                ),
+            borderRadius: borderRadius ?? BorderRadius.circular(12),
           ),
         ),
         child: Text(
