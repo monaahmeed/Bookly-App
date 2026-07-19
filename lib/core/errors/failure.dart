@@ -1,3 +1,5 @@
+
+
 import 'package:dio/dio.dart';
 
 abstract class Failure {
@@ -11,6 +13,8 @@ class ServerFailure extends Failure {
 
   
   factory ServerFailure.fromDioException(DioException e) {
+    print("🚨 [Dio Exception]: ${e.toString()}");
+    print("🚨 [Dio Response Data]: ${e.response?.data}");
     switch (e.type) {
       case DioExceptionType.connectionTimeout:
         return ServerFailure('Connection timeout with api server');
@@ -44,6 +48,7 @@ class ServerFailure extends Failure {
 
   
   factory ServerFailure.fromResponse(int statusCode, dynamic response) {
+    print("🚨 [Server Response Error]: StatusCode: $statusCode, Response: $response");
     if (statusCode == 404) {
       return ServerFailure('Your request was not found, please try later');
     } else if (statusCode == 500) {
@@ -57,6 +62,7 @@ class ServerFailure extends Failure {
       }
     } else {
       return ServerFailure('There was an error, please try again');
+      
     }
   }
 }
